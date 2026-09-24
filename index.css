@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+ * Design tokens — Flat Design system
+ * Every color / font / tracking value used by components lives here.
+ * Tailwind v4 turns each token into utilities (bg-primary, text-primary-ink…)
+ * ------------------------------------------------------------------ */
+@theme {
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+
+  /* Core palette */
+  --color-background: #ffffff;
+  --color-foreground: #111827;
+  --color-primary: #3b82f6;
+  --color-primary-hover: #2563eb;
+  --color-secondary: #10b981;
+  --color-secondary-hover: #059669;
+  --color-accent: #f59e0b;
+  --color-accent-hover: #d97706;
+  --color-muted: #f3f4f6;
+  --color-muted-hover: #e5e7eb;
+  --color-muted-foreground: #4b5563;
+  --color-border: #e5e7eb;
+
+  /* "Ink" variants: accessible (AA) colored text on white / tinted surfaces */
+  --color-primary-ink: #1d4ed8;
+  --color-secondary-ink: #047857;
+  --color-accent-ink: #b45309;
+
+  /* Typography */
+  --tracking-heading: -0.02em;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply tracking-heading;
+  }
+
+  ::selection {
+    @apply bg-accent text-foreground;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
